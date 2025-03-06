@@ -18,7 +18,7 @@ internal class MyHub : Hub
 
     public override Task OnConnectedAsync()
     {
-        Clients.Caller.SendAsync("Hello", "Придумай ник");
+        Clients.Caller.SendAsync("hello", "Придумай ник");
         Console.WriteLine("Новенький");
         return base.OnConnectedAsync();
     }
@@ -28,7 +28,7 @@ internal class MyHub : Hub
         var check = clientsByNickname.Keys.FirstOrDefault(s => s == nickname);
         if (check != null)
         {
-            Clients.Caller.SendAsync("Hello", "Придумай другой ник");
+            Clients.Caller.SendAsync("hello", "Придумай другой ник");
             return;
         }
         else

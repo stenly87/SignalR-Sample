@@ -72,7 +72,7 @@ namespace WpfApp1
 
         private void HubMethods()
         {
-            _connection.On<string>("Hello", s =>
+            _connection.On<string>("hello", s =>
             {
                 Dispatcher.Invoke(() =>
                 {
@@ -169,7 +169,12 @@ namespace WpfApp1
             {
                 button.Content = myChar;
                 MyTurn = false;
-                await _connection.SendAsync("MakeTurn", new Turn { GameId = gameid, Button = button.Name, Char = myChar });
+                await _connection.SendAsync("MakeTurn", 
+                    new Turn {
+                        GameId = gameid,
+                        Button = button.Name, 
+                        Char = myChar 
+                    });
             }
         }
     }
